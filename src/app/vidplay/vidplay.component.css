@@ -1,18 +1,36 @@
-.video-container {
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    justify-content: center;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .video-container {
+    max-width: 100%;
     width: 800px;
     height: 450px;
     position: relative;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.video-controls {
+  }
+  
+  .video-js {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .video-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-}
+  } 

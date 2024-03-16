@@ -1,13 +1,22 @@
-<div class="video-container p-grid p-justify-center">
-    <video id="my-video" class="video-js vjs-default-skin p-col-12" controls preload="auto"
-        poster="//vjs.zencdn.net/v/oceans.png" width="750" height="450">
-        <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-        Your browser does not support this video.
-    </video>
-    <div class="video-controls p-grid p-justify-center">
-        <p-button icon="pi pi-step-backward" class="m-3 p-col-3" (click)="backward()"></p-button>
-        <p-button icon="{{ isPlaying ? 'pi pi-pause' : 'pi pi-play' }}" class="m-3 p-col-3" (click)="play()"></p-button>
-        <p-button icon="pi pi-replay" class="m-3 p-col-3" (click)="replay()"></p-button>
-        <p-button icon="pi pi-step-forward" class="m-3 p-col-3" (click)="forward()"></p-button>
+<div class="container">
+    <h1>Web Video Player using Angular Framework and Video.js Library</h1>
+    <div class="video-container p-grid p-justify-center">
+        <video id="my-video" class="video-js vjs-fill vjs-default-skin" controls preload="auto"
+        poster="//vjs.zencdn.net/v/oceans.png" width="100%" height="100%">
+            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+            Your browser does not support this video.
+        </video>
+        <div class="video-controls p-grid p-justify-center">
+            <p-button icon="pi pi-replay" [rounded]="true" [raised]="true" class="m-3 p-col-3"
+                (click)="replay()"></p-button>
+            <p-button icon="pi pi-step-backward" [rounded]="true" [raised]="true" class="m-3 p-col-3"
+                (click)="backward()"></p-button>
+            <p-button icon="{{ isPlaying ? 'pi pi-pause' : 'pi pi-play' }}" [rounded]="true" [raised]="true"
+                class="m-3 p-col-3" (click)="play()"></p-button>
+            <p-button icon="pi pi-step-forward" class="m-3 p-col-3" [rounded]="true" [raised]="true"
+                (click)="forward()"></p-button>
+            <p-button icon="pi pi-window-maximize" class="m-3 p-col-3" [rounded]="true" [raised]="true"
+                (click)="toggleFullscreen()"></p-button>
+        </div>
     </div>
 </div>

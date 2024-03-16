@@ -57,4 +57,15 @@ export class VideoPlayerComponent implements OnInit {
         const currentTime = this.player.currentTime();
         this.player.currentTime(currentTime - 10);
     }
+
+    toggleFullscreen(): void {
+        const videoElement = document.getElementById('my-video');
+        if (videoElement) {
+            if (videoElement.requestFullscreen) {
+                videoElement.requestFullscreen();
+            } else if (videoElement.requestFullscreen) {
+                videoElement.requestFullscreen();
+            }
+        }
+    }
 }
