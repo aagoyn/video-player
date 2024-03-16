@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import videojs from 'video.js';
 
 @Component({
@@ -8,8 +7,8 @@ import videojs from 'video.js';
     styleUrls: ['./vidplay.component.css']
 })
 export class VideoPlayerComponent implements OnInit {
-
     player: any;
+    isPlaying: boolean = false; // Tambahkan variabel isPlaying
 
     constructor() { }
 
@@ -24,12 +23,29 @@ export class VideoPlayerComponent implements OnInit {
     }
 
     play(): void {
-        this.player.play();
+        if (this.isPlaying) {
+            this.player.pause();
+            this.isPlaying = false;
+        } else {
+            this.player.play();
+            this.isPlaying = true;
+        }
+    }
+
+    pause(): void {
+        if (this.isPlaying) {
+            this.player.pause();
+            this.isPlaying = false;
+        } else {
+            this.player.play();
+            this.isPlaying = true;
+        }
     }
 
     replay(): void {
         this.player.currentTime(0);
         this.player.play();
+        this.isPlaying = true;
     }
 
     forward(): void {
@@ -41,9 +57,4 @@ export class VideoPlayerComponent implements OnInit {
         const currentTime = this.player.currentTime();
         this.player.currentTime(currentTime - 10);
     }
-
-    pause(): void {
-        this.player.pause();
-    }
-
 }

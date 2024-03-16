@@ -6,8 +6,7 @@
     </video>
     <div class="video-controls p-grid p-justify-center">
         <p-button icon="pi pi-step-backward" class="m-3 p-col-3" (click)="backward()"></p-button>
-        <p-button icon="pi pi-play" class="m-3 p-col-3" (click)="play()"></p-button>
-        <p-button icon="pi pi-pause" class="m-3 p-col-3" (click)="pause()"></p-button>
+        <p-button icon="{{ isPlaying ? 'pi pi-pause' : 'pi pi-play' }}" class="m-3 p-col-3" (click)="play()"></p-button>
         <p-button icon="pi pi-replay" class="m-3 p-col-3" (click)="replay()"></p-button>
         <p-button icon="pi pi-step-forward" class="m-3 p-col-3" (click)="forward()"></p-button>
     </div>
