@@ -1,0 +1,14 @@
+<div class="video-container p-grid p-justify-center">
+    <video id="my-video" class="video-js vjs-default-skin p-col-12" controls preload="auto" 
+    poster="//vjs.zencdn.net/v/oceans.png" width="750" height="450">
+        <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+        Your browser does not support this video.
+    </video>
+    <div class="video-controls p-grid p-justify-center">
+        <p-button icon="pi pi-step-backward" class="m-3 p-col-3" (click)="backward()"></p-button>
+        <p-button label="Play" icon="pi pi-play" class="m-3 p-col-3" (click)="play()"></p-button>
+        <p-button label="Pause" icon="pi pi-pause" class="m-3 p-col-3" (click)="pause()"></p-button>
+        <p-button label="Replay" icon="pi pi-replay" class="m-3 p-col-3" (click)="replay()"></p-button>
+        <p-button icon="pi pi-step-forward" class="m-3 p-col-3" (click)="forward()"></p-button>
+    </div>
+</div>
