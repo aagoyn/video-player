@@ -8,7 +8,7 @@ import videojs from 'video.js';
 })
 export class VideoPlayerComponent implements OnInit {
     player: any;
-    isPlaying: boolean = false; // Tambahkan variabel isPlaying
+    isPlaying: boolean = false; 
 
     constructor() { }
 
