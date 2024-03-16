@@ -1,27 +1,62 @@
-# Vidplay
+# Web Video Player using Angular Framework and Video.js Library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.11.
+This project is a web video player built using **Angular** framework and **Video.js** library.
 
-## Development server
+## Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before running the application, make sure you have the following installed:
 
-## Code scaffolding
+- Node.js
+- Angular CLI
+- npm or yarn
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+1. Clone this repository.
+2. Install the necessary dependencies using `npm install`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+1. Create an Angular component for your video player. For example:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import videojs from 'video.js';
 
-## Running end-to-end tests
+@Component({
+  selector: 'app-vjs-player',
+  template: `
+    <video #target class="video-js" controls muted playsinline preload="none"></video>
+  `,
+  styleUrls: ['./vjs-player.component.css'],
+  encapsulation: ViewEncapsulation.None,
+})
+export class VjsPlayerComponent implements OnInit, OnDestroy {
+  @ViewChild('target', { static: true }) target: ElementRef;
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  @Input() options: {
+    fluid: boolean;
+    aspectRatio: string;
+    autoplay: boolean;
+    sources: {
+      src: string;
+      type: string;
+    }[];
+  };
 
-## Further help
+  player: videojs.Player;
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  constructor(private elementRef: ElementRef) {}
+
+  ngOnInit() {
+    this.player = videojs(this.target.nativeElement, this.options, function onPlayerReady() {
+      console.log('onPlayerReady', this);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.player) {
+      this.player.dispose();
+    }
+  }
+}
